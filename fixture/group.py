@@ -19,6 +19,12 @@ class GroupHelper:
         input.type_keys("\n")
         self.close_group_editor()
 
+    def del_group(self, group):
+        self.open_group_editor()
+        self.group_editor.window(name=group).click()
+        self.group_editor.window(auto_id="uxDeleteAddressButton").click()
+        self.close_group_editor()
+
     def open_group_editor(self):
         self.app.main_window.window(auto_id="groupButton").click()
         self.group_editor = self.app.application.window(title="Group editor")
