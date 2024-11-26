@@ -21,8 +21,11 @@ class GroupHelper:
 
     def del_group(self, group):
         self.open_group_editor()
-        self.group_editor.window(name=group).click()
+        groups_tree = self.group_editor.child_window(auto_id="uxAddressTreeView")
+        groups_tree.get_item(["Contact groups", "%s" % group]).click()
         self.group_editor.window(auto_id="uxDeleteAddressButton").click()
+        delete_group = self.app.application.window(title="Delete group")
+        delete_group.window(auto_id="uxOKAddressButton").click()
         self.close_group_editor()
 
     def open_group_editor(self):
