@@ -1,3 +1,7 @@
+import random
+import string
+
+
 class GroupHelper:
 
     def __init__(self, app):
@@ -35,3 +39,9 @@ class GroupHelper:
 
     def close_group_editor(self):
         self.group_editor.close()
+
+    @staticmethod
+    def random_string():
+        maxlen = 10
+        symbols = string.ascii_letters + string.digits
+        return "group_" + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
